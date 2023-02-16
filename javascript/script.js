@@ -1,53 +1,78 @@
-function add(a,b){
+function add(number1,number2){
 
-    if(a===null || b===null){
+    if(number1===null || number2===null){
         return;
-    }else if(a==="" || b===""){
+    }else if(number1==="" || number2===""){
         return;
-    }else if(isNaN(a) || isNaN(b)){
+    }else if(isNaN(number1) || isNaN(number2)){
         return;
     }
 
-    return +a + +b;
+    return +number1 + +number2;
 }
 
-function subtract(a,b){
+function subtract(number1,number2){
 
-    if(a===null || b===null){
+    if(number1===null || number2===null){
         return;
-    }else if(a==="" || b===""){
+    }else if(number1==="" || number2===""){
         return;
-    }else if(isNaN(a) || isNaN(b)){
+    }else if(isNaN(number1) || isNaN(number2)){
         return;
     }
 
-    return +a - +b;
+    return +number1 - +number2;
 }
 
-function multiply(a,b){
+function multiply(number1,number2){
 
-    if(a===null || b===null){
+    if(number1===null || number2===null){
         return;
-    }else if(a==="" || b===""){
+    }else if(number1==="" || number2===""){
         return;
-    }else if(isNaN(a) || isNaN(b)){
+    }else if(isNaN(number1) || isNaN(number2)){
         return;
     }
 
-    return +a * +b;
+    return +number1 * +number2;
 }
 
-function divide(a,b){
+function divide(number1,number2){
 
-    if(a===null || b===null){
+    if(number1===null || number2===null){
         return;
-    }else if(a==="" || b===""){
+    }else if(number1==="" || number2===""){
         return;
-    }else if(isNaN(a) || isNaN(b)){
+    }else if(isNaN(number1) || isNaN(number2)){
         return;
-    }else if(b==0){
+    }else if(number2==0){
         return;
     }
 
-    return +a / +b;
+    return +number1 / +number2;
+}
+
+function operate(number1,number2,operator){
+
+    if(operator==null){
+        return;
+    }
+
+    switch(operator){
+        case "+":
+            return add(number1,number2);
+            break;
+        case "-":
+            return subtract(number1,number2);
+            break;
+        case "*":
+            return multiply(number1,number2);
+            break;
+        case "/":
+            return divide(number1,number2);
+            break;
+        default:
+            return "Invalid operator.";
+    }
+
 }
