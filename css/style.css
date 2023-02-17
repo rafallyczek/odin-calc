@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator-container{
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+.left{
+    width: 150px;
+}
+.right{
+    width: 50px;
+}
+.left, .right{
+    display: flex;
+    flex-wrap: wrap;
+}
+button{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+}
