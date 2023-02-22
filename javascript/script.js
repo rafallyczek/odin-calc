@@ -6,17 +6,17 @@ let operators = [];
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click",function(){
     if(this.value=="="){
-        if(checkDisplayText()){
-            console.log("correct");
+        if(validateExpression()){
+            processExpression();
+            console.log(operands);
+            console.log(operators);
+        }else{
+            alert("Invalid Expression!");
+            reset();
         }
     }else if(this.value=="C"){
         reset();
     }else{
-        if(["+","-","*","/"].includes(this.value)){
-            operators.push(this.value)
-        }else{
-            operands.push(+this.value);
-        }
         updateDisplay(this.value);
     }
 }));
@@ -116,9 +116,9 @@ function reset(){
 
 }
 
-function checkDisplayText(){
+function validateExpression(){
 
-    text = displayText.replaceAll(" ","");
+    let text = displayText.replaceAll(" ","");
     text += " ";
 
     if(["+","-","*","/"].includes(text[0])){
@@ -132,5 +132,26 @@ function checkDisplayText(){
     }
 
     return true;
+
+}
+
+function processExpression(){
+
+    let text = displayText.replaceAll(" ","");
+    let number = "";
+
+    for(let i=0;i<text.length;i++){
+        
+        if(["+","-","*","/"].includes(text[i])){
+            operators.push(text[i]);
+            operands.push(+number);
+            number = "";
+        }else{
+            number += text[i];
+        }
+        
+    }
+
+    operands.push(+number);
 
 }
