@@ -1,3 +1,4 @@
+const display = document.querySelector(".display");
 let displayText = "";
 
 const buttons = document.querySelectorAll("button");
@@ -5,9 +6,9 @@ buttons.forEach(button => button.addEventListener("click",function(){
     if(this.value=="="){
         return;
     }else if(this.value=="C"){
-        return;
+        reset();
     }else{
-        display(this.value);
+        updateDisplay(this.value);
     }
 }));
 
@@ -90,10 +91,16 @@ function operate(number1,number2,operator){
 
 }
 
-function display(value){
+function updateDisplay(value){
 
-    displayText += `${value} `;
-    const display = document.querySelector(".display");
+    displayText += `${value} `; 
+    display.textContent = displayText;
+
+}
+
+function reset(){
+
+    displayText = "";
     display.textContent = displayText;
 
 }
