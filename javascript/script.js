@@ -1,3 +1,16 @@
+let displayText = "";
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener("click",function(){
+    if(this.value=="="){
+        return;
+    }else if(this.value=="C"){
+        return;
+    }else{
+        display(this.value);
+    }
+}));
+
 function add(number1,number2){
 
     if(number1===null || number2===null){
@@ -74,5 +87,13 @@ function operate(number1,number2,operator){
         default:
             return "Invalid operator.";
     }
+
+}
+
+function display(value){
+
+    displayText += `${value} `;
+    const display = document.querySelector(".display");
+    display.textContent = displayText;
 
 }
