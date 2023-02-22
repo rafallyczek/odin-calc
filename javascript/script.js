@@ -2,14 +2,15 @@ const display = document.querySelector(".display");
 let displayText = "";
 let operands = [];
 let operators = [];
+let isEvaluated = false;
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click",function(){
     if(this.value=="="){
         if(validateExpression()){
             processExpression();
-            console.log(operands);
-            console.log(operators);
+            evaluateExpression();
+            isEvaluated = true;
         }else{
             alert("Invalid Expression!");
             reset();
@@ -17,6 +18,11 @@ buttons.forEach(button => button.addEventListener("click",function(){
     }else if(this.value=="C"){
         reset();
     }else{
+        if(isEvaluated){
+            isEvaluated = false;
+            reset();
+        }
+        displayText += `${this.value} `;
         updateDisplay(this.value);
     }
 }));
@@ -100,9 +106,8 @@ function operate(number1,number2,operator){
 
 }
 
-function updateDisplay(value){
+function updateDisplay(){
 
-    displayText += `${value} `;
     display.textContent = displayText;
 
 }
@@ -153,5 +158,44 @@ function processExpression(){
     }
 
     operands.push(+number);
+
+}
+
+function evaluateExpression(){
+
+    let result;
+
+    //If expression has both multiplication/division and addition/subtraction
+    if(["*","/"].some(el => operators.includes(el)) && ["+","-"].some(el => operators.includes(el))){
+
+        for(let i=0;i<operators.length;i++){
+            if(["+","-"].includes(operators[i])){
+                continue;
+            }
+            result = operate(operands[i],operands[i+1],operators[i]);
+            operands[i] = result;
+            operands[i+1] = result;
+            operators[i] = " ";
+        }
+
+        let unique = [];
+        operators = operators.filter(operator => operator!=" ");
+        operands.forEach(operand => {
+            if(!unique.includes(operand)){
+                unique.push(operand);
+            }
+        })
+        operands = unique.slice();
+
+    }
+
+    while(operators.length>0){
+        result = operate(operands[0],operands[1],operators[0]);
+        operands.splice(0,2,result);
+        operators.splice(0,1);
+    }
+
+    displayText += `= ${operands[0]}`;
+    updateDisplay();
 
 }
