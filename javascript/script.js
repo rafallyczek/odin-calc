@@ -1,13 +1,22 @@
 const display = document.querySelector(".display");
 let displayText = "";
+let operands = [];
+let operators = [];
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click",function(){
     if(this.value=="="){
-        return;
+        if(checkDisplayText()){
+            console.log("correct");
+        }
     }else if(this.value=="C"){
         reset();
     }else{
+        if(["+","-","*","/"].includes(this.value)){
+            operators.push(this.value)
+        }else{
+            operands.push(+this.value);
+        }
         updateDisplay(this.value);
     }
 }));
@@ -93,14 +102,35 @@ function operate(number1,number2,operator){
 
 function updateDisplay(value){
 
-    displayText += `${value} `; 
+    displayText += `${value} `;
     display.textContent = displayText;
 
 }
 
 function reset(){
 
+    operands = [];
+    operators = [];
     displayText = "";
     display.textContent = displayText;
+
+}
+
+function checkDisplayText(){
+
+    text = displayText.replaceAll(" ","");
+    text += " ";
+
+    if(["+","-","*","/"].includes(text[0])){
+        return false;
+    }
+
+    for(let i=0;i<text.length;i++){
+        if(["+","-","*","/"].includes(text[i]) && ["+","-","*","/"," "].includes(text[i+1])){
+            return false;
+        }
+    }
+
+    return true;
 
 }
