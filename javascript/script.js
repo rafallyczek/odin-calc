@@ -22,7 +22,7 @@ buttons.forEach(button => button.addEventListener("click",function(){
             isEvaluated = false;
             reset();
         }
-        displayText += `${this.value} `;
+        displayText += `${this.value}`;
         updateDisplay(this.value);
     }
 }));
@@ -195,7 +195,7 @@ function evaluateExpression(){
         operators.splice(0,1);
     }
 
-    displayText += `= ${operands[0]}`;
+    displayText += `=${operands[0]}`;
     updateDisplay();
 
 }
