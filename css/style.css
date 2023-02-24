@@ -12,34 +12,34 @@ body{
     width: 400px;
     min-height: 40px;
     padding: 5px;
-    background-color: #990000;
-    color: white;
-    font-size: 30px;
-    border-radius: 5px;
-    text-align: center;
     margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
     opacity: 0;
+    color: #e6e6e6;
+    background-color: #990000;
+    border-radius: 5px;
 }
 .calculator-container{
+    width: 415px;
+    padding: 15px;
+    flex-basis: 630px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 415px;
-    flex-basis: 630px;
-    padding: 15px;
     background-color: gray;
     border-radius: 5px;
 }
 .display{
-    flex: 1 0 100px;
-    letter-spacing: 1px;
-    font-family: "Wallpoet";
-    background-color: lightblue;
-    font-size: 30px;
     padding: 5px 10px;
+    flex: 1 0 100px;
+    font-family: "Wallpoet";
+    font-size: 30px;
+    letter-spacing: 1px;
     overflow-wrap: break-word;
-    border-radius: 5px;
     color: #1a1a1a;
+    background-color: lightblue;
+    border-radius: 5px;
 }
 .buttons{
     flex: 5 0 500px;
@@ -48,15 +48,14 @@ body{
     gap: 5px;
 }
 button{
-    flex: 1 0 100px;
     padding: 0;
+    flex: 1 0 100px;
     font-size: 40px;
-    cursor: pointer;
     color: #e6e6e6;
     background-color: #666666;
     border: none;
     border-radius: 5px;
-    
+    cursor: pointer;
 }
 button:nth-child(1), button:nth-child(2){
     flex: 1 0 200px;
