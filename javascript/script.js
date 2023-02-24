@@ -8,12 +8,16 @@ let isEvaluated = false;
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click",function(){
     if(this.value=="="){
-        if(validateExpression()){
-            processExpression();
-            evaluateExpression();
-        }else{
-            showError("Invalid Expression!");
+        if(isEvaluated){
             reset();
+        }else{
+            if(validateExpression()){
+                processExpression();
+                evaluateExpression();
+            }else{
+                showError("Invalid Expression!");
+                reset();
+            }
         }
     }else if(this.value=="C"){
         reset();
