@@ -21,6 +21,13 @@ buttons.forEach(button => button.addEventListener("click",function(){
         }
     }else if(this.value=="C"){
         reset();
+    }else if(this.value=="D"){
+        if(isEvaluated){
+            reset();
+        }else{
+            displayText = displayText.slice(0,displayText.length-1);
+            updateDisplay();
+        }
     }else{
         if(isEvaluated){
             isEvaluated = false;
