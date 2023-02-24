@@ -23,8 +23,8 @@ body{
 .calculator-container{
     width: 415px;
     padding: 15px;
-    flex-basis: 630px;
-    gap: 10px;
+    flex-basis: 635px;
+    gap: 15px;
     display: flex;
     flex-direction: column;
     background-color: gray;
