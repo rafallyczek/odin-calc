@@ -27,7 +27,7 @@ buttons.forEach(button => button.addEventListener("click",function(){
             reset();
         }
         displayText += `${this.value}`;
-        updateDisplay(this.value);
+        updateDisplay();
     }
 }));
 
@@ -92,7 +92,7 @@ function reset(){
 
 function validateExpression(){
 
-    let text = displayText.replaceAll(" ","");
+    let text = displayText;
     text += " ";
 
     if(["+","-","*","/"].includes(text[0])){
@@ -111,7 +111,7 @@ function validateExpression(){
 
 function processExpression(){
 
-    let text = displayText.replaceAll(" ","");
+    let text = displayText;
     let number = "";
 
     for(let i=0;i<text.length;i++){
@@ -147,18 +147,12 @@ function evaluateExpression(){
                 return;
             }
             operands[i] = result;
-            operands[i+1] = result;
+            operands[i+1] = null;
             operators[i] = " ";
         }
 
-        let unique = [];
         operators = operators.filter(operator => operator!=" ");
-        operands.forEach(operand => {
-            if(!unique.includes(operand)){
-                unique.push(operand);
-            }
-        })
-        operands = [...unique];
+        operands = operands.filter(operand => operand!=null);
 
     }
 
