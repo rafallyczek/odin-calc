@@ -33,8 +33,9 @@ body{
 }
 .calculator-container{
     display: flex;
+    flex-wrap: wrap;
     width: 400px;
-    height: 400px;
+    height: 450px;
 }
 .left{
     width: 300px;
@@ -42,27 +43,33 @@ body{
 .right{
     width: 100px;
 }
-.left, .right{
+.up{
+    width: 400px;
+}
+.left, .right, .up{
     display: flex;
     flex-wrap: wrap;
 }
 button{
-    width: 100px;
+    flex-basis: 100px;
     height: 100px;
     font-size: 40px;
     cursor: pointer;
     background-color: gray;
 }
-.left > button:last-child{
+.up > button{
+    flex-basis: 200px;
+}
+.greenText{
     color: #65e765;
 }
-.left > button:last-child:hover{
+.greenText:hover{
     color: green;
 }
-.left > button:nth-child(10){
+.redText{
     color: #e76565;
 }
-.left > button:nth-child(10):hover{
+.redText:hover{
     color: red;
 }
 button:hover{
