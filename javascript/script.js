@@ -45,7 +45,7 @@ function multiply(number1,number2){
 function divide(number1,number2){
 
     if(number2==0){
-        showError("Division by 0.")
+        showError("Division by 0!")
         return null;
     }
 
