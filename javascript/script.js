@@ -1,4 +1,5 @@
 const display = document.querySelector(".display");
+const error = document.querySelector(".error");
 let displayText = "";
 let operands = [];
 let operators = [];
@@ -10,9 +11,8 @@ buttons.forEach(button => button.addEventListener("click",function(){
         if(validateExpression()){
             processExpression();
             evaluateExpression();
-            isEvaluated = true;
         }else{
-            alert("Invalid Expression!");
+            showError("Invalid Expression!");
             reset();
         }
     }else if(this.value=="C"){
@@ -29,63 +29,30 @@ buttons.forEach(button => button.addEventListener("click",function(){
 
 function add(number1,number2){
 
-    if(number1===null || number2===null){
-        return;
-    }else if(number1==="" || number2===""){
-        return;
-    }else if(isNaN(number1) || isNaN(number2)){
-        return;
-    }
-
     return +number1 + +number2;
 }
 
 function subtract(number1,number2){
-
-    if(number1===null || number2===null){
-        return;
-    }else if(number1==="" || number2===""){
-        return;
-    }else if(isNaN(number1) || isNaN(number2)){
-        return;
-    }
 
     return +number1 - +number2;
 }
 
 function multiply(number1,number2){
 
-    if(number1===null || number2===null){
-        return;
-    }else if(number1==="" || number2===""){
-        return;
-    }else if(isNaN(number1) || isNaN(number2)){
-        return;
-    }
-
     return +number1 * +number2;
 }
 
 function divide(number1,number2){
 
-    if(number1===null || number2===null){
-        return;
-    }else if(number1==="" || number2===""){
-        return;
-    }else if(isNaN(number1) || isNaN(number2)){
-        return;
-    }else if(number2==0){
-        return;
+    if(number2==0){
+        showError("Division by 0.")
+        return null;
     }
 
     return +number1 / +number2;
 }
 
 function operate(number1,number2,operator){
-
-    if(operator==null){
-        return;
-    }
 
     switch(operator){
         case "+":
@@ -100,8 +67,6 @@ function operate(number1,number2,operator){
         case "/":
             return divide(number1,number2);
             break;
-        default:
-            return "Invalid operator.";
     }
 
 }
@@ -173,6 +138,10 @@ function evaluateExpression(){
                 continue;
             }
             result = operate(operands[i],operands[i+1],operators[i]);
+            if(result==null){
+                reset();
+                return;
+            }
             operands[i] = result;
             operands[i+1] = result;
             operators[i] = " ";
@@ -191,11 +160,28 @@ function evaluateExpression(){
 
     while(operators.length>0){
         result = operate(operands[0],operands[1],operators[0]);
+        if(result==null){
+            reset();
+            return;
+        }
         operands.splice(0,2,result);
         operators.splice(0,1);
     }
 
     displayText += `=${Math.round(operands[0]*100)/100}`;
+    isEvaluated = true;
     updateDisplay();
+
+}
+
+function showError(message){
+
+    error.textContent = message;
+    error.style.opacity = "1";
+    setTimeout(()=>{
+        error.style.transition = "opacity 1s";
+        error.style.opacity = "0";
+    },5000);
+    error.style.removeProperty("transition");
 
 }
