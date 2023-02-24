@@ -6,13 +6,13 @@ body{
     align-items: center;
     flex-direction: column;
     font-family: "Roboto";
-    background-color: dimgray;
+    background-color: #333333;
 }
 .error{
-    width: 390px;
+    width: 400px;
     min-height: 40px;
     padding: 5px;
-    background-color: red;
+    background-color: #990000;
     color: white;
     font-size: 30px;
     border-radius: 5px;
@@ -20,58 +20,59 @@ body{
     margin-bottom: 10px;
     opacity: 0;
 }
+.calculator-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 415px;
+    flex-basis: 630px;
+    padding: 15px;
+    background-color: gray;
+    border-radius: 5px;
+}
 .display{
-    width: 390px;
-    min-height: 90px;
+    flex: 1 0 100px;
     letter-spacing: 1px;
     font-family: "Wallpoet";
     background-color: lightblue;
     font-size: 30px;
-    padding: 5px;
+    padding: 5px 10px;
     overflow-wrap: break-word;
     border-radius: 5px;
+    color: #1a1a1a;
 }
-.calculator-container{
+.buttons{
+    flex: 5 0 500px;
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 450px;
-}
-.left{
-    width: 300px;
-}
-.right{
-    width: 100px;
-}
-.up{
-    width: 400px;
-}
-.left, .right, .up{
-    display: flex;
-    flex-wrap: wrap;
+    gap: 5px;
 }
 button{
-    flex-basis: 100px;
-    height: 100px;
+    flex: 1 0 100px;
+    padding: 0;
     font-size: 40px;
     cursor: pointer;
-    background-color: gray;
+    color: #e6e6e6;
+    background-color: #666666;
+    border: none;
+    border-radius: 5px;
+    
 }
-.up > button{
-    flex-basis: 200px;
+button:nth-child(1), button:nth-child(2){
+    flex: 1 0 200px;
 }
-.greenText{
-    color: #65e765;
+.blue{
+    background-color: #334d99;
 }
-.greenText:hover{
-    color: green;
+.blue:hover{
+    background-color: #2d4386;
 }
-.redText{
-    color: #e76565;
+.red{
+    background-color: #993333;
 }
-.redText:hover{
-    color: red;
+.red:hover{
+    background-color: #862d2d;
 }
 button:hover{
-    background-color: darkgray;
+    background-color: #595959;
 }
