@@ -185,7 +185,7 @@ function evaluateExpression(){
                 unique.push(operand);
             }
         })
-        operands = unique.slice();
+        operands = [...unique];
 
     }
 
@@ -195,7 +195,7 @@ function evaluateExpression(){
         operators.splice(0,1);
     }
 
-    displayText += `=${operands[0]}`;
+    displayText += `=${Math.round(operands[0]*100)/100}`;
     updateDisplay();
 
 }
