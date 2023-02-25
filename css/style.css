@@ -1,65 +1,71 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
 body{
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     font-family: "Roboto";
-    background-color: #333333;
-}
-.error{
-    width: 400px;
-    min-height: 40px;
-    padding: 5px;
-    margin-bottom: 10px;
     font-size: 30px;
     text-align: center;
-    opacity: 0;
+    background-color: #333333;
     color: #e6e6e6;
-    background-color: #990000;
     border-radius: 5px;
 }
+
+div{
+    border-radius: inherit;
+}
+
+button{
+    font-size: 40px;
+    background-color: #666666;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+    border-radius: inherit;
+}
+
+.error{
+    width: 400px;
+    padding: 5px;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
 .calculator-container{
-    width: 415px;
-    padding: 15px;
-    flex-basis: 635px;
-    gap: 15px;
     display: flex;
     flex-direction: column;
-    background-color: gray;
-    border-radius: 5px;
+    flex-shrink: 0;
+    flex-basis: 600px;
+    width: 400px;
+    gap: 15px;
+    padding: 15px;
 }
+
 .display{
     padding: 5px 10px;
-    flex: 1 0 100px;
-    font-family: "Wallpoet";
-    font-size: 30px;
-    letter-spacing: 1px;
-    overflow-wrap: break-word;
-    color: #1a1a1a;
-    background-color: lightblue;
-    border-radius: 5px;
+    flex: 1;
 }
+
 .buttons{
-    flex: 5 0 500px;
     display: flex;
     flex-wrap: wrap;
+    flex: 5;
     gap: 5px;
 }
-button{
-    padding: 0;
-    flex: 1 0 100px;
-    font-size: 40px;
-    color: #e6e6e6;
-    background-color: #666666;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+.button-big{
+    flex: 1 0 calc(50% - (5px * 1/2));
 }
-button:nth-child(1), button:nth-child(2){
-    flex: 1 0 200px;
+.button-small{
+    flex: 1 0 calc(25% - (5px * 3/4));  
 }
+
 .blue{
     background-color: #334d99;
 }
@@ -69,9 +75,29 @@ button:nth-child(1), button:nth-child(2){
 .red{
     background-color: #993333;
 }
-.red:hover{
+button.red:hover{
     background-color: #862d2d;
 }
 button:hover{
     background-color: #595959;
+}
+.font-clr-dark{
+    color: #1a1a1a;
+}
+.font-digital{
+    font-family: "Wallpoet";
+    overflow-wrap: break-word;
+    letter-spacing: 1px;
+}
+.bg-clr-light{
+    background-color: lightblue;
+}
+.bg-clr-gray{
+    background-color: gray;
+}
+.text-left{
+    text-align: left;
+}
+.border-btn{
+    border: 2px outset #767676;
 }
