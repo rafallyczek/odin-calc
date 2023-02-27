@@ -84,7 +84,9 @@ function operate(number1,number2,operator){
 
 function updateDisplay(){
 
-    display.textContent = displayText;
+    let text = displayText.split("/").join("÷");
+    text = text.split("*").join("×");
+    display.textContent = text;
 
 }
 
@@ -170,12 +172,13 @@ function validateExpression(){
         if(["+","-","*","/"].includes(text[i]) && ["+","-","*","/","."," "].includes(text[i+1])){
             return false;
         }
+        
         if(text[i]=="."){
             commaCount += 1;
         }else if(["+","-","*","/"].includes(text[i])){
             commaCount = 0;
         }
-        console.log(commaCount);
+
         if(commaCount>1){
             return false;
         }
