@@ -120,6 +120,7 @@ p {
 button{
     font-size: 40px;
     background-color: #666666;
+    border: 2px outset #767676;
     cursor: pointer;
     font-family: inherit;
     color: inherit;
