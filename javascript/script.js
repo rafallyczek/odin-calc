@@ -147,8 +147,19 @@ function validateExpression(){
         return false;
     }
 
+    let commaCount = 0;
+
     for(let i=0;i<text.length;i++){
-        if(["+","-","*","/"].includes(text[i]) && ["+","-","*","/"," "].includes(text[i+1])){
+        if(["+","-","*","/"].includes(text[i]) && ["+","-","*","/","."," "].includes(text[i+1])){
+            return false;
+        }
+        if(text[i]=="."){
+            commaCount += 1;
+        }else if(["+","-","*","/"].includes(text[i])){
+            commaCount = 0;
+        }
+        console.log(commaCount);
+        if(commaCount>1){
             return false;
         }
     }
@@ -225,10 +236,8 @@ function toggleOperations(){
     const operations = document.querySelectorAll(".operation");
     operations.forEach(operation => {
         if(areOperationsDisabled){
-            console.log("disabling operation");
             operation.disabled = "true";
         }else{
-            console.log("enabling operation");
             operation.removeAttribute("disabled");
         }
     });
