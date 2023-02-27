@@ -15,44 +15,20 @@ let areOperationsDisabled = false;
    ------------------ */
 
 const buttons = document.querySelectorAll("button");
-buttons.forEach(button => button.addEventListener("click",function(){
-    if(this.value=="="){
-        if(isEvaluated){
-            reset();
-        }else{
-            if(validateExpression()){
-                processExpression();
-                evaluateExpression();
-            }else{
-                showError("Invalid Expression!");
-                reset();
-            }
-        }
-    }else if(this.value=="C"){
-        reset();
-    }else if(this.value=="D"){
-        if(isEvaluated){
-            reset();
-        }else{
-            displayText = displayText.slice(0,displayText.length-1);
-            updateDisplay();
-        }
-    }else{
-        if(isEvaluated){
-            isEvaluated = false;
-            reset();
-        }
-        if(["*","/","+","-","."].includes(this.value)){
-            areOperationsDisabled = true;
-            toggleOperations();
-        }else if(areOperationsDisabled){
-            areOperationsDisabled = false;
-            toggleOperations();
-        }
-        displayText += `${this.value}`;
-        updateDisplay();
-    }
+buttons.forEach(button => button.addEventListener("click",() => {
+    input(button.value);
 }));
+
+document.addEventListener("keydown",(e) => {
+    if(e.key=="Backspace" || e.key=="d" || e.key=="D"){
+        input("D");
+    }else if(e.key=="c" || e.key=="C"){
+        input("C");
+    }else if(["1","2","3","4","5","6","7","8","9","0","*","/","-","+",".","="].includes(e.key)){
+        input(e.key);
+    }
+    console.log(`${e.key} ${e.code}`);
+});
 
 /* ------------------
        OPERATIONS 
@@ -116,7 +92,7 @@ function showError(message){
 
     error.textContent = message;
     error.style.opacity = "1";
-    setTimeout(()=>{
+    setTimeout(() => {
         error.style.transition = "opacity 1s";
         error.style.opacity = "0";
     },5000);
@@ -127,6 +103,47 @@ function showError(message){
 /* ------------------
         UTILITY
    ------------------ */
+
+function input(value){
+
+    if(value=="="){
+        if(isEvaluated){
+            reset();
+        }else{
+            if(validateExpression()){
+                processExpression();
+                evaluateExpression();
+            }else{
+                showError("Invalid Expression!");
+                reset();
+            }
+        }
+    }else if(value=="C"){
+        reset();
+    }else if(value=="D"){
+        if(isEvaluated){
+            reset();
+        }else{
+            displayText = displayText.slice(0,displayText.length-1);
+            updateDisplay();
+        }
+    }else{
+        if(isEvaluated){
+            isEvaluated = false;
+            reset();
+        }
+        if(["*","/","+","-","."].includes(value)){
+            areOperationsDisabled = true;
+            toggleOperations();
+        }else if(areOperationsDisabled){
+            areOperationsDisabled = false;
+            toggleOperations();
+        }
+        displayText += `${value}`;
+        updateDisplay();
+    }
+
+}
 
 function reset(){
 
