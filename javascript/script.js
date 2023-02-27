@@ -1,9 +1,18 @@
+/* ------------------
+       VARIABLES 
+   ------------------ */
+
 const display = document.querySelector(".display");
 const error = document.querySelector(".error");
 let displayText = "";
 let operands = [];
 let operators = [];
 let isEvaluated = false;
+let areOperationsDisabled = false;
+
+/* ------------------
+       LISTENERS 
+   ------------------ */
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click",function(){
@@ -33,10 +42,21 @@ buttons.forEach(button => button.addEventListener("click",function(){
             isEvaluated = false;
             reset();
         }
+        if(["*","/","+","-","."].includes(this.value)){
+            areOperationsDisabled = true;
+            toggleOperations();
+        }else if(areOperationsDisabled){
+            areOperationsDisabled = false;
+            toggleOperations();
+        }
         displayText += `${this.value}`;
         updateDisplay();
     }
 }));
+
+/* ------------------
+       OPERATIONS 
+   ------------------ */
 
 function add(number1,number2){
 
@@ -82,17 +102,38 @@ function operate(number1,number2,operator){
 
 }
 
+/* ------------------
+       DISPLAYING 
+   ------------------ */
+
 function updateDisplay(){
 
     display.textContent = displayText;
 
 }
 
+function showError(message){
+
+    error.textContent = message;
+    error.style.opacity = "1";
+    setTimeout(()=>{
+        error.style.transition = "opacity 1s";
+        error.style.opacity = "0";
+    },5000);
+    error.style.removeProperty("transition");
+
+}
+
+/* ------------------
+        UTILITY
+   ------------------ */
+
 function reset(){
 
     operands = [];
     operators = [];
     displayText = "";
+    isEvaluated = false;
     display.textContent = displayText;
 
 }
@@ -179,14 +220,17 @@ function evaluateExpression(){
 
 }
 
-function showError(message){
+function toggleOperations(){
 
-    error.textContent = message;
-    error.style.opacity = "1";
-    setTimeout(()=>{
-        error.style.transition = "opacity 1s";
-        error.style.opacity = "0";
-    },5000);
-    error.style.removeProperty("transition");
+    const operations = document.querySelectorAll(".operation");
+    operations.forEach(operation => {
+        if(areOperationsDisabled){
+            console.log("disabling operation");
+            operation.disabled = "true";
+        }else{
+            console.log("enabling operation");
+            operation.removeAttribute("disabled");
+        }
+    });
 
 }
