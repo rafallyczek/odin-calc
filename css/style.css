@@ -1,10 +1,12 @@
-*, *::before, *::after{
-    box-sizing: border-box;
-}
+/* ------------------
+     GLOBAL STYLES 
+   ------------------ */
+
+*, *::before, *::after { box-sizing: border-box; }
 
 body{
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     font-family: "Roboto";
@@ -14,19 +16,11 @@ body{
     color: #e6e6e6;
     border-radius: 5px;
 }
-div{
-    border-radius: inherit;
-}
-p{
-    margin: 0;
-}
-a{
-    color: #666666;
-    text-decoration: none;
-}
-a:hover{
-    color: gray;
-}
+
+div { border-radius: inherit; }
+
+p { margin: 0; }
+
 button{
     font-size: 40px;
     background-color: #666666;
@@ -36,6 +30,35 @@ button{
     border-radius: inherit;
 }
 
+/* ------------------
+      TYPOGRAPHY 
+   ------------------ */
+
+a:hover { color: gray; }
+
+a{
+    color: #666666;
+    text-decoration: none;
+}
+
+.font-clr-dark{
+    color: #1a1a1a;
+}
+
+.font-digital{
+    font-family: "Wallpoet";
+    overflow-wrap: break-word;
+    letter-spacing: 1px;
+}
+
+.text-left{
+    text-align: left;
+}
+
+/* ------------------
+        LAYOUT 
+   ------------------ */
+
 .content{
     display: flex;
     flex-direction: column;
@@ -43,6 +66,7 @@ button{
     align-items: center;
     flex: 1;
 }
+
 .error{
     width: 400px;
     min-height: 45px;
@@ -50,6 +74,7 @@ button{
     margin-bottom: 10px;
     opacity: 0;
 }
+
 .calculator-container{
     display: flex;
     flex-direction: column;
@@ -59,16 +84,19 @@ button{
     gap: 15px;
     padding: 15px;
 }
+
 .display{
     padding: 5px 10px;
     flex: 1;
 }
+
 .buttons{
     display: flex;
     flex-wrap: wrap;
     flex: 5;
     gap: 5px;
 }
+
 .footer{
     display: flex;
     flex-direction: column;
@@ -85,6 +113,10 @@ button{
     flex: 1 0 calc(25% - (5px * 3/4));  
 }
 
+/* ------------------
+        COLORS 
+   ------------------ */
+
 .blue{
     background-color: #334d99;
 }
@@ -100,22 +132,11 @@ button.red:hover{
 button:hover{
     background-color: #595959;
 }
-.font-clr-dark{
-    color: #1a1a1a;
-}
-.font-digital{
-    font-family: "Wallpoet";
-    overflow-wrap: break-word;
-    letter-spacing: 1px;
-}
 .bg-clr-light{
     background-color: lightblue;
 }
 .bg-clr-gray{
     background-color: gray;
-}
-.text-left{
-    text-align: left;
 }
 .border-btn{
     border: 2px outset #767676;
