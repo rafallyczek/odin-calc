@@ -127,6 +127,11 @@ button{
     border-radius: inherit;
 }
 
+button:disabled{
+    border: 2px outset rgba(118,118,118,0.3);
+    color: rgba(230, 230, 230, 0.3);
+}
+
 .border-btn{
     border: 2px outset #767676;
 }
