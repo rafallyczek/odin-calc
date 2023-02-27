@@ -2,7 +2,9 @@
      GLOBAL STYLES 
    ------------------ */
 
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
 
 body{
     margin: 0;
@@ -21,7 +23,9 @@ body{
        TYPOGRAPHY 
    ------------------ */
 
-a:hover { color: gray; }
+a:hover {
+    color: gray;
+}
 
 a{
     color: #666666;
@@ -96,6 +100,7 @@ a{
 .button-big{
     flex: 1 0 calc(50% - (5px * 1/2));
 }
+
 .button-small{
     flex: 1 0 calc(25% - (5px * 3/4));  
 }
@@ -104,9 +109,13 @@ a{
        COMPONENTS 
    ------------------ */
 
-div { border-radius: inherit; }
+div {
+    border-radius: inherit;
+}
 
-p { margin: 0; }
+p {
+    margin: 0;
+}
    
 button{
     font-size: 40px;
