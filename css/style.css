@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-direction: column;
     font-family: "Roboto";
-    font-size: 30px;
+    font-size: 2rem;
     text-align: center;
     background-color: #333333;
     color: #e6e6e6;
@@ -23,13 +23,19 @@ body{
        TYPOGRAPHY 
    ------------------ */
 
-a:hover {
-    color: gray;
+a{
+    color: #777;
+    text-decoration: none;
 }
 
-a{
-    color: #666666;
-    text-decoration: none;
+a:hover {
+    color: #888;
+}
+
+p{
+    font-size: 1.3rem;
+    text-align: center;
+    color: white;
 }
 
 .font-clr-dark{
@@ -61,8 +67,8 @@ a{
 .error{
     width: 400px;
     min-height: 45px;
-    padding: 5px;
-    margin-bottom: 10px;
+    padding: .1em;
+    margin-bottom: .5em;
     opacity: 0;
 }
 
@@ -73,11 +79,11 @@ a{
     flex-basis: 600px;
     width: 400px;
     gap: 15px;
-    padding: 15px;
+    padding: .5em;
 }
 
 .display{
-    padding: 5px 10px;
+    padding: .2em .5em;
     flex: 1;
 }
 
@@ -86,15 +92,6 @@ a{
     flex-wrap: wrap;
     flex: 5;
     gap: 5px;
-}
-
-.footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px;
-    border-radius: 0;
-    font-size: 20px;
 }
 
 .button-big{
@@ -112,13 +109,13 @@ a{
 div {
     border-radius: inherit;
 }
-
-p {
-    margin: 0;
-}
    
+p{
+    margin: .2em;
+}
+
 button{
-    font-size: 40px;
+    font-size: 2.5rem;
     background-color: #666666;
     border: 2px outset #767676;
     cursor: pointer;
