@@ -83,7 +83,7 @@ p{
 }
 
 .display{
-    min-height: 100px;
+    min-height: 3.5em;
     padding: .2em .5em;
     flex: 1;
 }
