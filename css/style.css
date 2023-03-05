@@ -77,29 +77,26 @@ p{
     flex-direction: column;
     flex-shrink: 0;
     flex-basis: 600px;
-    width: 400px;
+    min-width: 400px;
     gap: 15px;
     padding: .5em;
 }
 
 .display{
+    min-height: 100px;
     padding: .2em .5em;
     flex: 1;
 }
 
 .buttons{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 5;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 5px;
+    flex: 5;
 }
 
 .button-big{
-    flex: 1 0 calc(50% - (5px * 1/2));
-}
-
-.button-small{
-    flex: 1 0 calc(25% - (5px * 3/4));  
+    grid-column: span 2;
 }
 
 /* ------------------
